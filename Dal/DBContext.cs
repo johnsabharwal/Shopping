@@ -15,6 +15,8 @@ namespace Dal
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<ProductRating> ProductRatings { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
+        public DbSet<CommentImage> CommentImages { get; set; }
+
     }
 }

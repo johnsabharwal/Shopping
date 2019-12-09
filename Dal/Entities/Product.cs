@@ -12,7 +12,7 @@ namespace Dal.Entities
             ProductSizes = new HashSet<ProductSize>();
             ProductsImages = new HashSet<ProductsImages>();
             OrderDetails = new HashSet<OrderDetails>();
-            ProductRatings=new HashSet<ProductRating>();
+            ProductComments = new HashSet<ProductComment>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -30,7 +30,7 @@ namespace Dal.Entities
         public ICollection<ProductSize> ProductSizes { get; set; }
         public ICollection<ProductsImages> ProductsImages { get; set; }
         public ICollection<OrderDetails> OrderDetails { get; set; }
-        public ICollection<ProductRating> ProductRatings { get; set; }
+        public ICollection<ProductComment> ProductComments { get; set; }
 
     }
 }

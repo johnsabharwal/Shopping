@@ -29,13 +29,20 @@ namespace Dal.Implementation
                     ProductCode = x.ProductCode,
                     Id = x.Id,
                     CategoryId = x.CategoryId,
-                    Ratings = x.ProductRatings.Select(y => new Rating() { GivenRating = y.Rating, RatingFrom = y.RatingFrom, userId = y.userId }).ToList(),
-
                     ProductColors = x.ProductColors.Select(y => new ProductColors() { Color = y.Color }).ToList(),
                     ProductImages = x.ProductsImages.Select(y => new ProductImages() { Path = y.ImagePath }).ToList(),
                     ProductSizes = x.ProductSizes.Select(y => new ProductSize() { Size = y.Size }).ToList(),
                     Category = new Category() { Id = x.CategoryId, Name = x.Category.Name },
-                    Description = x.Description
+                    Description = x.Description,
+                    Comments = x.ProductComments.Select(y => new Comments()
+                    {
+                        Comment = y.UserComment,
+                        ProductId = y.ProductId,
+                        Rating = y.RatingGiven,
+                        UserId = y.UserId,
+                        Id=y.Id,
+                        CommentsImages = y.CommentImages.Select(z => new CommentsImages() { ImagePath = z.ImagePath }).ToList()
+                    }).ToList(),
                 }).FirstOrDefault();
         }
         public (int,List<Products>) GetProduts(int pageNo, int categoryId, string searchString)
@@ -56,7 +63,15 @@ namespace Dal.Implementation
                     ProductSizes = x.ProductSizes.Select(y => new ProductSize() { Size = y.Size }).ToList(),
                     Category = new Category() { Id = x.CategoryId, Name = x.Category.Name },
                     Description = x.Description,
-                    Ratings = x.ProductRatings.Select(y => new Rating() { GivenRating = y.Rating, RatingFrom = y.RatingFrom, userId = y.userId }).ToList(),
+                    Comments = x.ProductComments.Select(y => new Comments()
+                    {
+                        Comment = y.UserComment,
+                        ProductId = y.ProductId,
+                        Rating = y.RatingGiven,
+                        UserId = y.UserId,
+                        Id = y.Id,
+                        CommentsImages = y.CommentImages.Select(z => new CommentsImages() { ImagePath = z.ImagePath }).ToList()
+                    }).ToList(),
                 });
             return (data.Count(), data.Skip(pageNo-1).Take(10).ToList());
         }

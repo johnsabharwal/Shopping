@@ -13,7 +13,7 @@ namespace Dal.DTO
             ProductColors = new List<ProductColors>();
             ProductSizes = new List<ProductSize>();
             Category = new Category();
-            Ratings = new List<Rating>();
+            Comments = new List<Comments> ();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -29,7 +29,7 @@ namespace Dal.DTO
         public  List<ProductImages> ProductImages { get; set; }
         public List<ProductColors> ProductColors { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
-        public List<Rating> Ratings { get; set; }
+        public List<Comments> Comments { get; set; }
     }
     public class ProductImages
     {
@@ -49,10 +49,22 @@ namespace Dal.DTO
         public string Value { get; set; }
 
     }
-    public class Rating
+    public class Comments
     {
-        public int GivenRating { get; set; }
-        public int userId { get; set; }
-        public int RatingFrom { get; set; }
+        public Comments()
+        {
+            CommentsImages = new List<CommentsImages>();
+                
+        }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+        public string Comment { get; set; }
+        public int Rating { get; set; }
+        public List<CommentsImages> CommentsImages { get; set; }
+    }
+        public class CommentsImages
+    {
+        public string ImagePath { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Dal.Entities
         public User()
         {
             Orders = new HashSet<Order>();
-            ProductRating = new HashSet<ProductRating>();
+            ProductComments = new HashSet<ProductComment>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -21,6 +21,6 @@ namespace Dal.Entities
         public DateTime DateCreated { get; set; }
         public DateTime LastLogin { get; set; }
         public ICollection<Order> Orders { get; set; }
-        public ICollection<ProductRating> ProductRating { get; set; }
+        public ICollection<ProductComment> ProductComments { get; set; }
     }
 }
